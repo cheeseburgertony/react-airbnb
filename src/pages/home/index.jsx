@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { fecthGoodPriceIndo } from '@/store/modules/home'
 import { HomeWrapper } from './style'
 import HomeBanner from './c-cpns/home-banner'
+import SectionHeader from '@/components/section-header'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
@@ -16,10 +17,12 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <h1>{goodPriceInfo.title}</h1>
-        <ul>
-          {goodPriceInfo.list?.map(item => <li key={item.id}>{item.name}</li>)}
-        </ul>
+        <div className="good-price">
+          <SectionHeader title={goodPriceInfo.title} subtitle={goodPriceInfo.subtitle} />
+          <ul>
+            {goodPriceInfo.list?.map(item => <li key={item.id}>{item.name}</li>)}
+          </ul>
+        </div>
       </div>
     </HomeWrapper>
   )
