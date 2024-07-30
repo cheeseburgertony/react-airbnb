@@ -7,7 +7,7 @@ export const LeftWrapper = styled.div`
   color: ${props => props.theme.color.primaryColor};
 
   .logo{
-    margin-left: 80px;
+    margin-left: 24px;
     cursor: pointer;
   }
 `
