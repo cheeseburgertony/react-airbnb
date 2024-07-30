@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const CenterWrapper = styled.div`
-  .search-bar{
+  .search-bar {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -14,13 +14,13 @@ export const CenterWrapper = styled.div`
     cursor: pointer;
     ${props => props.theme.mixin.boxShadow}
 
-    .text{
+    .text {
       padding: 0 16px;
       color: #222;
       font-weight: 600;
     }
 
-    .icon{
+    .icon {
       display: flex;
       align-items: center;
       justify-content: center;
