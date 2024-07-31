@@ -1,12 +1,12 @@
-import React, { memo, useEffect } from 'react'
+import React, { memo, useEffect} from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fecthGoodPriceInfo } from '@/store/modules/home'
 
 import { HomeWrapper } from './style'
 import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1'
-import SectionHeader from '@/components/section-header'
-import SectionRooms from '@/components/section-rooms'
+import HomeSectionV2 from './c-cpns/home-section-v2'
+import { isEmptyObj } from '@/utils/is-empty-obj'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
@@ -16,6 +16,9 @@ const Home = memo(() => {
     discountInfo: state.home.discountInfo
   }), shallowEqual)
 
+
+
+
   useEffect(() => {
     dispatch(fecthGoodPriceInfo())
   }, [dispatch])
@@ -24,13 +27,9 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
-        <div className="discount">
-          <SectionHeader title={discountInfo.title} subtitle={discountInfo.subtitle} />
-          <SectionRooms roomList={discountInfo.dest_list?.['佛山']} itemWidth='33.3333%' />
-        </div>
-
-        <HomeSectionV1 infoData={goodPriceInfo} />
-        <HomeSectionV1 infoData={highScoreInfo} />
+        {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+        {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
+        {isEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
       </div>
     </HomeWrapper>
   )
