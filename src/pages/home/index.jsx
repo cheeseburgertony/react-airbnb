@@ -7,6 +7,7 @@ import HomeBanner from './c-cpns/home-banner'
 import HomeSectionV1 from './c-cpns/home-section-v1'
 import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObj } from '@/utils/is-empty-obj'
+import HomeLogfor from './c-cpns/home-longfor'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
@@ -14,12 +15,14 @@ const Home = memo(() => {
     goodPriceInfo,
     highScoreInfo,
     discountInfo,
-    recommendInfo
+    recommendInfo,
+    longforInfo
   } = useSelector(state => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
     discountInfo: state.home.discountInfo,
-    recommendInfo: state.home.recommendInfo
+    recommendInfo: state.home.recommendInfo,
+    longforInfo: state.home.longforInfo
   }), shallowEqual)
 
 
@@ -33,6 +36,7 @@ const Home = memo(() => {
     <HomeWrapper>
       <HomeBanner />
       <div className="content">
+        {isEmptyObj(longforInfo) && <HomeLogfor infoData={longforInfo} />}
         {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
         {isEmptyObj(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} />}
         {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
