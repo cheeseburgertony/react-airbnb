@@ -10,5 +10,6 @@ export const HeaderWrapper = styled.div`
   .subtitle {
     margin-bottom: 20px;
     font-size: 16px;
+    color: ${props => props.theme.text.secondaryColor};
   }
 `
