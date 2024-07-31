@@ -14,3 +14,6 @@ export const getHomeHotrecommendAPI = () => request.get('/home/hotrecommenddest'
 
 // 获取向往城市数据
 export const getHomeLongforAPI = () => request.get('/home/longfor')
+
+// 获取Plus房源数据
+export const getHomePlusAPI = () => request.get('/home/plus')

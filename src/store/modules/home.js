@@ -1,4 +1,4 @@
-import { getHomeDiscountAPI, getHomeGoodpriceAPI, getHomeHighscoreAPI, getHomeHotrecommendAPI, getHomeLongforAPI } from "@/services";
+import { getHomeDiscountAPI, getHomeGoodpriceAPI, getHomeHighscoreAPI, getHomeHotrecommendAPI, getHomeLongforAPI, getHomePlusAPI } from "@/services";
 import { createSlice } from "@reduxjs/toolkit";
 
 const homeSlice = createSlice({
@@ -8,7 +8,8 @@ const homeSlice = createSlice({
     highScoreInfo: {},
     discountInfo: {},
     recommendInfo: {},
-    longforInfo: {}
+    longforInfo: {},
+    plusInfo: {}
   },
   reducers: {
     changeGoodPriceInfo(state, action) {
@@ -25,6 +26,9 @@ const homeSlice = createSlice({
     },
     changeLongforInfo(state, action) {
       state.longforInfo = action.payload
+    },
+    changePlushInfo(state, action) {
+      state.plusInfo = action.payload
     }
   }
 })
@@ -35,7 +39,8 @@ export const {
   changeHighscoreInfo,
   changeDiscountInfo,
   changeRecommendInfo,
-  changeLongforInfo
+  changeLongforInfo,
+  changePlushInfo
 } = homeSlice.actions
 
 // 异步操作
@@ -57,6 +62,9 @@ export const fecthGoodPriceInfo = () => {
     })
     getHomeLongforAPI().then(res => {
       dispatch(changeLongforInfo(res))
+    })
+    getHomePlusAPI().then(res => {
+      dispatch(changePlushInfo(res))
     })
   }
 }
