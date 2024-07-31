@@ -1,4 +1,4 @@
-import React, { memo, useEffect} from 'react'
+import React, { memo, useEffect } from 'react'
 import { shallowEqual, useDispatch, useSelector } from 'react-redux'
 import { fecthGoodPriceInfo } from '@/store/modules/home'
 
@@ -10,10 +10,16 @@ import { isEmptyObj } from '@/utils/is-empty-obj'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
-  const { goodPriceInfo, highScoreInfo, discountInfo } = useSelector(state => ({
+  const {
+    goodPriceInfo,
+    highScoreInfo,
+    discountInfo,
+    recommendInfo
+  } = useSelector(state => ({
     goodPriceInfo: state.home.goodPriceInfo,
     highScoreInfo: state.home.highScoreInfo,
-    discountInfo: state.home.discountInfo
+    discountInfo: state.home.discountInfo,
+    recommendInfo: state.home.recommendInfo
   }), shallowEqual)
 
 
@@ -28,6 +34,7 @@ const Home = memo(() => {
       <HomeBanner />
       <div className="content">
         {isEmptyObj(discountInfo) && <HomeSectionV2 infoData={discountInfo} />}
+        {isEmptyObj(recommendInfo) && <HomeSectionV2 infoData={recommendInfo} />}
         {isEmptyObj(goodPriceInfo) && <HomeSectionV1 infoData={goodPriceInfo} />}
         {isEmptyObj(highScoreInfo) && <HomeSectionV1 infoData={highScoreInfo} />}
       </div>
