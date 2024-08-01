@@ -27,7 +27,7 @@ const RoomItem = memo((props) => {
 
   // RoomItem区域被点击进行跳转
   const itemClickHandle = () => {
-    goToDetail(itemData)
+    if (goToDetail) goToDetail(itemData)
   }
 
   return (

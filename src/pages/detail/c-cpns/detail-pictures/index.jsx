@@ -9,7 +9,7 @@ const DetailPictures = memo(() => {
 
   return (
     <PicturesWrapper>
-      <div className="picture">
+      <div className="pictures">
         <div className="left">
           <div className="item">
             <img src={detailInfo?.picture_urls[0]} alt="" />
@@ -18,13 +18,14 @@ const DetailPictures = memo(() => {
         </div>
         <div className="right">
           {detailInfo?.picture_urls?.slice(1, 5).map(item => (
-            <div className="item">
+            <div key={item} className="item">
               <img src={item} alt="" />
               <div className="cover"></div>
             </div>
           ))}
         </div>
       </div>
+      <div className="show-btn">显示照片</div>
     </PicturesWrapper>
   )
 })
