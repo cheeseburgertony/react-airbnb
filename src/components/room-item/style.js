@@ -5,10 +5,43 @@ export const ItemWrapper = styled.div`
   padding: 8px;
   box-sizing: border-box;
   flex-shrink: 0;
+
+  .slider {
+    position: relative;
+    cursor: pointer;
+
+    &:hover .control {
+      display: flex;
+    }
+
+    .control {
+      justify-content: space-between;
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      display: none;
+      color: #fff;
+
+      .btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 83px;
+        height: 100%;
+        background: linear-gradient(to left,transparent 0%,rgba(0,0,0,0.25) 100%);
+
+        &.right {
+          background: linear-gradient(to right,transparent 0%,rgba(0,0,0,0.25) 100%);
+        }
+      }
+    }
+  }
   
   .inner {
     width: 100%;
-    cursor: pointer;
 
     .cover {
       position: relative;
