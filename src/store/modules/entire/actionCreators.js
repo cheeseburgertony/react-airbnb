@@ -17,10 +17,11 @@ export const changeTotalCountAction = totalCount => ({
 })
 
 // 异步action
-export const fetchRoomListAction = () => {
+export const fetchRoomListAction = (page = 0) => {
   return async (dispatch, getState) => {
-    const currentPage = getState().entire.currentPage
-    const res = await getEntireListAPI(currentPage * 20)
+    dispatch(changeCurrentPageAction(page))
+    // const currentPage = getState().entire.currentPage
+    const res = await getEntireListAPI(page * 20)
     dispatch(changeRoomListAction(res.list))
     dispatch(changeTotalCountAction(res.totalCount))
   }
