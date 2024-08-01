@@ -10,11 +10,12 @@ import Indicator from '@/base-ui/indicator'
 import classNames from 'classnames'
 
 const RoomItem = memo((props) => {
-  const { itemData, itemWidth = '25%' } = props
+  const { itemData, itemWidth = '25%', goToDetail } = props
   const [selectIndex, setSelectIndex] = useState(0)
 
   const sliderRef = useRef()
 
+  // 处理左右按钮点击事件
   const controlClickHandle = (isRight = true) => {
     isRight ? sliderRef.current.next() : sliderRef.current.prev()
     const itemImgCount = itemData.picture_urls.length - 1
@@ -24,8 +25,13 @@ const RoomItem = memo((props) => {
     setSelectIndex(newIndex)
   }
 
+  // RoomItem区域被点击进行跳转
+  const itemClickHandle = () => {
+    goToDetail(itemData)
+  }
+
   return (
-    <ItemWrapper
+    <ItemWrapper onClick={itemClickHandle}
       verifyColor={itemData.verify_info.text_color || '#39576a'}
       itemWidth={itemWidth}
     >
@@ -83,7 +89,8 @@ const RoomItem = memo((props) => {
 
 RoomItem.propTypes = {
   itemData: PropTypes.object,
-  itemWidth: PropTypes.string
+  itemWidth: PropTypes.string,
+  goToDetail: PropTypes.func
 }
 
 export default RoomItem
