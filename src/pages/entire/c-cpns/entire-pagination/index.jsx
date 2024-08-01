@@ -17,6 +17,9 @@ const EntirePagination = memo(() => {
 
   const dispatch = useDispatch()
   const pageChangeHandle = (e, value) => {
+    // 每次切换页时回到顶部
+    window.scroll(0, 0)
+
     // 调用dispacth进行派发，重新获取新数据
     dispatch(fetchRoomListAction(value - 1))
   }

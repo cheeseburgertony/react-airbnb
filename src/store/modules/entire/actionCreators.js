@@ -16,12 +16,20 @@ export const changeTotalCountAction = totalCount => ({
   totalCount
 })
 
+export const changeIsLoadingAction = isLoading => ({
+  type: actionTypes.CHANGE_IS_LOADING,
+  isLoading
+})
+
 // 异步action
 export const fetchRoomListAction = (page = 0) => {
   return async (dispatch, getState) => {
     dispatch(changeCurrentPageAction(page))
     // const currentPage = getState().entire.currentPage
+    // 监测是否加载完毕
+    dispatch(changeIsLoadingAction(true))
     const res = await getEntireListAPI(page * 20)
+    dispatch(changeIsLoadingAction(false))
     dispatch(changeRoomListAction(res.list))
     dispatch(changeTotalCountAction(res.totalCount))
   }
