@@ -52,7 +52,7 @@ export const RightWrapper = styled.div`
       background-color: #fff;
       box-shadow: 0 0 6px rgba(0,0,0,.2);
 
-      .top, .bottom {
+      .panel-top, .panel-bottom {
         padding: 10px 0;
 
         .item {
