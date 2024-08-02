@@ -9,6 +9,7 @@ import HomeSectionV2 from './c-cpns/home-section-v2'
 import { isEmptyObj } from '@/utils/is-empty-obj'
 import HomeLogfor from './c-cpns/home-longfor'
 import HomeSectionV3 from './c-cpns/home-section-v3'
+import { changeHeaderConfigAction } from '@/store/modules/main'
 
 const Home = memo(() => {
   const dispatch = useDispatch()
@@ -32,6 +33,8 @@ const Home = memo(() => {
 
   useEffect(() => {
     dispatch(fecthGoodPriceInfo())
+    // 修改redux中的数据来确定header是否需要固定的数据
+    dispatch(changeHeaderConfigAction({ isFixed: true }))
   }, [dispatch])
 
   return (
