@@ -3,6 +3,7 @@ import { FooterWrapper } from './style'
 import footData from '@/assets/data/footer.json'
 
 const AppFooter = memo(() => {
+  
   return (
     <FooterWrapper>
       <div className="wrapper">
