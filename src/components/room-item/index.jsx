@@ -16,13 +16,15 @@ const RoomItem = memo((props) => {
   const sliderRef = useRef()
 
   // 处理左右按钮点击事件
-  const controlClickHandle = (isRight = true) => {
+  const controlClickHandle = (e, isRight = true) => {
     isRight ? sliderRef.current.next() : sliderRef.current.prev()
     const itemImgCount = itemData.picture_urls.length - 1
     let newIndex = isRight ? selectIndex + 1 : selectIndex - 1
     if (newIndex < 0) newIndex = itemImgCount
     if (newIndex > itemImgCount) newIndex = 0
     setSelectIndex(newIndex)
+    // 阻止冒泡
+    e.stopPropagation()
   }
 
   // RoomItem区域被点击进行跳转
@@ -44,10 +46,10 @@ const RoomItem = memo((props) => {
         {itemData?.picture_urls && (
           <div className="slider">
             <div className="control">
-              <div className="btn left" onClick={e => controlClickHandle(false)}>
+              <div className="btn left" onClick={e => controlClickHandle(e, false)}>
                 <IconArrowLeft width="30" height="30" />
               </div>
-              <div className="btn right" onClick={e => controlClickHandle(true)}>
+              <div className="btn right" onClick={e => controlClickHandle(e, true)}>
                 <IconArrowRight width="30" height="30" />
               </div>
             </div>
