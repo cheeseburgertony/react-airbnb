@@ -31,4 +31,17 @@ export const CenterWrapper = styled.div`
       background-color: ${props => props.theme.color.primaryColor};
     }
   }
+
+  .search-detail {
+    position: relative;
+    transform: 50% 0;
+    will-change: transform, opacity;
+
+    .infos {
+      position: absolute;
+      top: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
 `
