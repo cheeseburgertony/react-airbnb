@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const TabsWrapper = styled.div`
   display: flex;
-  color: #222;
+  color: ${props => props.theme.isAlpha ? '#fff' : '#222'};
 
   .item {
     position: relative;
@@ -18,7 +18,7 @@ export const TabsWrapper = styled.div`
       left: 0;
       width: 64px;
       height: 2px;
-      background-color: #333;
+      background-color: ${props => props.theme.isAlpha ? '#fff' : '#333'};
     }
   }
 

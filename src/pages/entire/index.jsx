@@ -14,7 +14,7 @@ const Entire = memo(() => {
   useEffect(() => {
     dispatch(fetchRoomListAction())
     // 修改redux中的数据来确定header是否需要固定的数据
-    dispatch(changeHeaderConfigAction({isFixed: true}))
+    dispatch(changeHeaderConfigAction({ isFixed: true, topAlpha: false }))
   }, [dispatch])
 
   return (

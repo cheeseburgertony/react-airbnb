@@ -4,7 +4,7 @@ export const RightWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
   flex: 1;
-  color: ${props => props.theme.text.primaryColor};
+  color: ${props => props.theme.isAlpha ? '#fff' : props.theme.text.primaryColor};
   font-size: 14px;
   font-weight: 600;
 
@@ -21,7 +21,7 @@ export const RightWrapper = styled.div`
       cursor: pointer;
 
       &:hover {
-        background-color: #f5f5f5;
+        background-color: ${props => props.theme.isAlpha ? 'rgba(255, 255, 255, 0.1)' : '#f5f5f5'};
       }
     }
   }
