@@ -17,11 +17,6 @@ export const HeaderWrapper = styled.div`
       align-items: center;
       height: 80px;
     }
-
-    .search-area {
-      height: 100px;
-      /* transition: height 250ms ease; */
-    }
   }
 
   .cover {
@@ -42,4 +37,9 @@ export const HeaderWrapper = styled.div`
     left: 0;
     z-index: 99;
   }
+`
+
+export const SearchAreaWrapper = styled.div`
+  height: ${props => props.isSearch ? '100px' : '0'};
+  transition: height 250ms ease;
 `
